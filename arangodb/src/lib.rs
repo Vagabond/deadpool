@@ -150,7 +150,7 @@ impl managed::Manager for Manager {
         return Ok(conn);
     }
 
-    async fn recycle(&self, conn: &mut ArangoConnection) -> RecycleResult {
+    async fn recycle(&self, conn: &mut ArangoConnection, _: &Metrics) -> RecycleResult {
         let url = Url::parse(&self.url).expect("Url should be valid at this point");
         conn.session()
             // I don't know if this is the correct way to do it, but TRACE should allow us to check if the connection is still open,
